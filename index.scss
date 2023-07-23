@@ -132,7 +132,7 @@ section {
           left: 5vw;
           top: 0;
         }
-        .chat{
+        .chat {
           height: 14vw;
           left: 26.5vw;
           margin-right: 15vw;
@@ -152,15 +152,15 @@ section {
         position: relative;
         flex-direction: column;
         align-items: flex-end;
-        .common-heading{
+        .common-heading {
           width: 15vw;
         }
-        .common-paragraph-text{
+        .common-paragraph-text {
           width: 15vw;
         }
-        .common-outline-button{
+        .common-outline-button {
           margin-right: 7vw;
-        } 
+        }
       }
     }
   }
@@ -180,13 +180,12 @@ section {
 }
 
 @keyframes animateButton {
-  0%{
+  0% {
     transform: translateY(20px);
   }
-  100%{
+  100% {
     transform: translateY(0px);
   }
-
 }
 
 .animate-active {
@@ -203,6 +202,7 @@ section {
 }
 
 .animate-active-left {
+  opacity: 1;
   animation: animateActiveLeft 0.5s ease-in, 0.3s linear;
 }
 
@@ -228,7 +228,7 @@ section {
   width: 2.5vw;
   font-size: 1.2vw;
   border-radius: 50%;
-  border:1px solid orangered;
+  border: 1px solid orangered;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -238,11 +238,11 @@ section {
 .next-btn {
   right: 4vw;
 }
-.prev-btn{
+.prev-btn {
   left: 4vw;
 }
 
-.container .gradientGreen{
+.container .gradientGreen {
   height: 1px;
   width: 1px;
   background: transparent;
@@ -250,8 +250,10 @@ section {
   position: absolute;
   left: 0;
   top: 0;
+  z-index: -1;
+  transition: all 10s linear ease-in;
 }
-.container .gradientRed{
+.container .gradientRed {
   height: 1px;
   width: 1px;
   background: transparent;
@@ -259,4 +261,119 @@ section {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.videotext-area {
+  position: relative;
+  border: 1px solid;
+  .textArea {
+    top: 10vw;
+    right: 10vw;
+    .common-outline-text {
+      width: max-content;
+      writing-mode: vertical-rl; /* Vertical writing mode, rotates 90 degrees clockwise */
+      display: inline-block;
+      position: absolute;
+      top: 0vw;
+      left: -8vw;
+      transform: rotateZ(-180deg);
+      span {
+        display: inline-block; /* Ensure proper width calculation */
+        white-space: nowrap;
+      }
+    }
+    .common-heading {
+    }
+    .common-paragraph-text {
+      width: 22vw;
+    }
+  }
+}
+.videotext-area-second {
+  .textArea {
+    bottom: 5vw;
+    top: auto;
+    left: 10vw;
+  }
+  .common-outline-text {
+    width: max-content;
+    writing-mode: vertical-rl; /* Vertical writing mode, rotates 90 degrees clockwise */
+    display: inline-block;
+    position: absolute;
+    top: -15vw;
+    left: -8vw;
+    transform: rotateZ(-180deg);
+    span {
+      display: inline-block; /* Ensure proper width calculation */
+      white-space: nowrap;
+    }
+  }
+  .common-paragraph-text{
+    width: 22vw;
+  }
+}
+
+.experiences-area {
+  .slides {
+    .slide {
+      flex-direction: row;
+      .imageArea {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .quote {
+          height: 3vw;
+          z-index: 10;
+          position: relative;
+          left: -5vw;
+          transition: opacity 1s linear;
+          animation: opacityAnimate 1s linear;
+          opacity: 0;
+          animation-delay: 0.5s;
+        }
+        .path {
+          height: 20vw;
+          z-index: 5;
+          position: absolute;
+          top: 5vw;
+          animation: opacityAnimate 1s linear;
+          animation-delay: 1s;
+          opacity: 0;
+        }
+        .img {
+          height: 35vw;
+          z-index: 90;
+          animation: opacityAnimate 1s linear;
+          animation-delay: 1.5s;
+          opacity: 0;
+          position: relative;
+          mix-blend-mode: difference;
+        }
+      }
+      .textArea {
+        justify-content: center;
+        align-items: flex-start;
+        .common-heading {
+          font-size: 3vw;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
+
+
+.add-opacity{
+  opacity: 1 !important;
+  transition: opacity 1s ease-in;
+  
+}
+@keyframes opacityAnimate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

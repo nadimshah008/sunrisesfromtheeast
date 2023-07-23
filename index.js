@@ -1,4 +1,34 @@
 var containers = document.querySelectorAll(".container");
+var gradientGreen = document.querySelector(".gradientGreen");
+var gradientRed = document.querySelector(".gradientRed");
+
+const handleGradients = () => {
+  containers.forEach((container) => {
+    let gG = container.querySelector(".gradientGreen");
+    let gR = container.querySelector(".gradientRed");
+    if (gG) {
+      gG.style.top =
+        Math.round(Math.random() * container.clientHeight - gG.clientHeight) +
+        "px";
+      gG.style.left =
+        Math.round(Math.random() * container.clientWidth - gG.clientWidth) +
+        "px";
+    }
+    if (gR) {
+      gR.style.top =
+        Math.round(Math.random() * container.clientHeight - gR.clientHeight) +
+        "px";
+      gR.style.left =
+        Math.round(Math.random() * container.clientWidth - gR.clientWidth) +
+        "px";
+    }
+  });
+};
+
+window.addEventListener("load", handleGradients);
+let moveRandom = setInterval(() => {
+  handleGradients();
+}, 2000);
 
 function isElementInViewport(el) {
   var rect = el.getBoundingClientRect();
@@ -18,9 +48,18 @@ function handleScroll() {
   let commonOutlineText;
   let commonParagraphText;
   let commonButton;
+  let quoteImage;
+  let pathImage;
+  let clientImage;
   containers.forEach((element) => {
     if (element.children.length) {
       imageArea = element.querySelector(".imageArea");
+      if (imageArea.children.length) {
+        quoteImage = imageArea?.querySelector(".quote");
+        pathImage = imageArea?.querySelector(".path");
+        clientImage = imageArea?.querySelector(".img");
+      }
+
       textArea = element.querySelector(".textArea");
       commonHeading = textArea?.querySelector(".common-heading");
       commonOutlineText = textArea?.querySelector(".common-outline-text");
@@ -33,12 +72,33 @@ function handleScroll() {
         if (element.classList.contains("slider-container")) {
           imageArea.style.opacity = 1;
           imageArea.classList.add("animate-active-left");
+          quoteImage?.classList.add("add-opacity");
+          setTimeout(() => {
+            pathImage?.classList.add("add-opacity");
+          }, 500);
+          setTimeout(() => {
+            clientImage?.classList.add("add-opacity");
+          }, 700);
+
+          //   setTimeout(() => {
+          //     pathImage?.style.opacity=1;
+          //   }, 500);
+          //   setTimeout(() => {
+          //     clientImage?.style.opacity=1;
+          //   }, 1000);
         } else {
           imageArea.style.opacity = 1;
           imageArea.classList.add("animate-active");
         }
       } else {
         imageArea.style.opacity = 0;
+        quoteImage?.classList.remove("add-opacity");
+        setTimeout(() => {
+          pathImage?.classList.remove("add-opacity");
+        }, 500);
+        setTimeout(() => {
+          clientImage?.classList.remove("add-opacity");
+        }, 700);
         imageArea.classList.remove("animate-active");
         if (imageArea.classList.contains("animate-active-left")) {
           imageArea.classList.remove("animate-active-left");
@@ -124,11 +184,17 @@ function createSlider(sliderContainer) {
           .classList.remove("animate-active-left");
       }, 500);
     }, 500);
+
+    let ImageItems = slide[slideIndex].querySelector(".imageArea").children;
+    for (let i = 0; i < ImageItems.length; i++) {
+      setTimeout(() => {
+        ImageItems[i].classList.add("add-opacity");
+      }, 200 * i + 1);
+    }
   }
 
   // Move to the next slide
   function nextSlide() {
-    console.log("Hi");
     slideIndex = (slideIndex + 1) % slides.children.length;
     updateSlidePosition();
   }

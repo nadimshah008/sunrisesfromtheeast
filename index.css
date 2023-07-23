@@ -221,6 +221,7 @@ section {
   }
 }
 .animate-active-left {
+  opacity: 1;
   animation: animateActiveLeft 0.5s ease-in, 0.3s linear;
 }
 
@@ -270,6 +271,8 @@ section {
   position: absolute;
   left: 0;
   top: 0;
+  z-index: -1;
+  transition: all 10s linear ease-in;
 }
 
 .container .gradientRed {
@@ -280,4 +283,113 @@ section {
   position: absolute;
   right: 0;
   bottom: 0;
+}
+
+.videotext-area {
+  position: relative;
+  border: 1px solid;
+}
+.videotext-area .textArea {
+  top: 10vw;
+  right: 10vw;
+}
+.videotext-area .textArea .common-outline-text {
+  width: -moz-max-content;
+  width: max-content;
+  writing-mode: vertical-rl; /* Vertical writing mode, rotates 90 degrees clockwise */
+  display: inline-block;
+  position: absolute;
+  top: 0vw;
+  left: -8vw;
+  transform: rotateZ(-180deg);
+}
+.videotext-area .textArea .common-outline-text span {
+  display: inline-block; /* Ensure proper width calculation */
+  white-space: nowrap;
+}
+.videotext-area .textArea .common-paragraph-text {
+  width: 22vw;
+}
+
+.videotext-area-second .textArea {
+  bottom: 5vw;
+  top: auto;
+  left: 10vw;
+}
+.videotext-area-second .common-outline-text {
+  width: -moz-max-content;
+  width: max-content;
+  writing-mode: vertical-rl; /* Vertical writing mode, rotates 90 degrees clockwise */
+  display: inline-block;
+  position: absolute;
+  top: -15vw;
+  left: -8vw;
+  transform: rotateZ(-180deg);
+}
+.videotext-area-second .common-outline-text span {
+  display: inline-block; /* Ensure proper width calculation */
+  white-space: nowrap;
+}
+.videotext-area-second .common-paragraph-text {
+  width: 22vw;
+}
+
+.experiences-area .slides .slide {
+  flex-direction: row;
+}
+.experiences-area .slides .slide .imageArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.experiences-area .slides .slide .imageArea .quote {
+  height: 3vw;
+  z-index: 10;
+  position: relative;
+  left: -5vw;
+  transition: opacity 1s linear;
+  animation: opacityAnimate 1s linear;
+  opacity: 0;
+  animation-delay: 0.5s;
+}
+.experiences-area .slides .slide .imageArea .path {
+  height: 20vw;
+  z-index: 5;
+  position: absolute;
+  top: 5vw;
+  animation: opacityAnimate 1s linear;
+  animation-delay: 1s;
+  opacity: 0;
+}
+.experiences-area .slides .slide .imageArea .img {
+  height: 35vw;
+  z-index: 90;
+  animation: opacityAnimate 1s linear;
+  animation-delay: 1.5s;
+  opacity: 0;
+  position: relative;
+  mix-blend-mode: difference;
+}
+.experiences-area .slides .slide .textArea {
+  justify-content: center;
+  align-items: flex-start;
+}
+.experiences-area .slides .slide .textArea .common-heading {
+  font-size: 3vw;
+  white-space: nowrap;
+}
+
+.add-opacity {
+  opacity: 1 !important;
+  transition: opacity 1s ease-in;
+}
+
+@keyframes opacityAnimate {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=index.css.map */

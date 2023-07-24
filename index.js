@@ -51,6 +51,11 @@ function handleScroll() {
   let quoteImage;
   let pathImage;
   let clientImage;
+  let commentedBy;
+  let partnerIcons;
+  let lineArrow;
+  let insightImages;
+  let trekImage;
   containers.forEach((element) => {
     if (element.children.length) {
       imageArea = element.querySelector(".imageArea");
@@ -58,6 +63,9 @@ function handleScroll() {
         quoteImage = imageArea?.querySelector(".quote");
         pathImage = imageArea?.querySelector(".path");
         clientImage = imageArea?.querySelector(".img");
+        partnerIcons = imageArea?.querySelectorAll(".partner-icon");
+        insightImages = imageArea?.querySelectorAll(".insight-image");
+        trekImage = imageArea?.querySelector(".trek");
       }
 
       textArea = element.querySelector(".textArea");
@@ -65,6 +73,8 @@ function handleScroll() {
       commonOutlineText = textArea?.querySelector(".common-outline-text");
       commonParagraphText = textArea?.querySelector(".common-paragraph-text");
       commonButton = textArea?.querySelector(".common-outline-button ");
+      commentedBy = textArea?.querySelector(".commented-by");
+      lineArrow = textArea.querySelector(".line-arrow");
 
       let elementY = Math.round(element.getBoundingClientRect().y);
 
@@ -72,6 +82,7 @@ function handleScroll() {
         if (element.classList.contains("slider-container")) {
           imageArea.style.opacity = 1;
           imageArea.classList.add("animate-active-left");
+
           quoteImage?.classList.add("add-opacity");
           setTimeout(() => {
             pathImage?.classList.add("add-opacity");
@@ -79,20 +90,79 @@ function handleScroll() {
           setTimeout(() => {
             clientImage?.classList.add("add-opacity");
           }, 700);
-
-          //   setTimeout(() => {
-          //     pathImage?.style.opacity=1;
-          //   }, 500);
-          //   setTimeout(() => {
-          //     clientImage?.style.opacity=1;
-          //   }, 1000);
         } else {
           imageArea.style.opacity = 1;
           imageArea.classList.add("animate-active");
+
+          partnerIcons.forEach((partner, index) => {
+            setTimeout(() => {
+              partner.style.opacity = 1;
+              partner.classList.add("animate-active-opacity");
+            }, 200 * index);
+          });
+          if (insightImages.length) {
+            insightImages.forEach((insightImage, index) => {
+              insightImage.addEventListener("mouseleave", () => {
+                const originalColor = 'transparent';
+                const blinkColor = "pink";
+
+                insightImage.style.backgroundColor = blinkColor;
+
+                setTimeout(() => {
+                  insightImage.style.backgroundColor = originalColor;
+                }, 500);
+              });
+
+              if (index == 0 || index == 2) {
+                setTimeout(() => {
+                  insightImage.classList.add("animate-active-top");
+                }, 250);
+              } else {
+                setTimeout(() => {
+                  insightImage.classList.add("animate-active-bottom");
+                }, 500);
+              }
+            });
+          }
+          if(trekImage){
+            setTimeout(() => {
+              trekImage.classList.add('animate-active-top-image')
+            }, 500);
+          }
+
+
+
         }
       } else {
         imageArea.style.opacity = 0;
         quoteImage?.classList.remove("add-opacity");
+        partnerIcons.forEach((partner, index) => {
+          setTimeout(() => {
+            partner.style.opacity = 0;
+            partner.classList.remove("animate-active-opacity");
+          }, 200 * index);
+        });
+
+        if (insightImages.length) {
+          insightImages.forEach((insightImage, index) => {
+            if (index == 0 || index == 2) {
+              setTimeout(() => {
+                insightImage.classList.remove("animate-active-top");
+              }, 250);
+            } else {
+              setTimeout(() => {
+                insightImage.classList.remove("animate-active-bottom");
+              }, 500);
+            }
+          });
+        }
+
+        if(trekImage){
+          setTimeout(() => {
+            trekImage.classList.remove('animate-active-top-image')
+          }, 500);
+        }
+
         setTimeout(() => {
           pathImage?.classList.remove("add-opacity");
         }, 500);
@@ -113,6 +183,18 @@ function handleScroll() {
         commonOutlineText.classList.remove("animate-active");
       }
 
+      if (elementY < 200) {
+        if (lineArrow) {
+          lineArrow.style.opacity = 1;
+          lineArrow.classList.add("animate-active");
+        }
+      } else {
+        if (lineArrow) {
+          lineArrow.style.opacity = 0;
+          lineArrow.classList.remove("animate-active");
+        }
+      }
+
       if (elementY < 150) {
         commonHeading.style.opacity = 1;
         commonHeading.classList.add("animate-active");
@@ -121,7 +203,7 @@ function handleScroll() {
         commonHeading.classList.remove("animate-active");
       }
 
-      if (elementY < 70) {
+      if (elementY < 120) {
         commonParagraphText.style.opacity = 1;
         commonParagraphText.classList.add("animate-active");
       } else {
@@ -129,7 +211,7 @@ function handleScroll() {
         commonParagraphText.classList.remove("animate-active");
       }
 
-      if (elementY < 60) {
+      if (elementY < 70) {
         if (commonButton) {
           commonButton.style.opacity = 1;
           commonButton.classList.add("animate-active");
@@ -138,6 +220,18 @@ function handleScroll() {
         if (commonButton) {
           commonButton.style.opacity = 0;
           commonButton.classList.remove("animate-active");
+        }
+      }
+
+      if (elementY < 55) {
+        if (commentedBy) {
+          commentedBy.style.opacity = 1;
+          commentedBy.classList.add("animate-active");
+        }
+      } else {
+        if (commentedBy) {
+          commentedBy.style.opacity = 0;
+          commentedBy.classList.remove("animate-active");
         }
       }
 

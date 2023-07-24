@@ -677,6 +677,7 @@ section {
     background: rgba($color:rgb(246, 25, 25), $alpha: 0.8);
     border-radius: 20px;
     padding: 4vw 3vw;
+    transition: bottom 1s linear;
     .common-outline-text{
       -webkit-text-stroke: 1px #fff;
       letter-spacing: 1px;
@@ -692,5 +693,18 @@ section {
       border: 1px solid #fff;
       margin-top: 2vw;
     }
+  }
+}
+
+.our-culture-bottom-top{
+ animation: acitveOurCultureBottomTop 0.8s ease-in; 
+}
+
+@keyframes acitveOurCultureBottomTop {
+  0%{
+    bottom: -2vw;
+  }
+  100%{
+    bottom: 5vw;
   }
 }

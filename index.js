@@ -175,6 +175,26 @@ function handleScroll() {
         }
       }
 
+      if(elementY < 400){
+      if(element.classList.contains("culture-area")){
+        textArea.style.opacity = 1;
+        textArea.classList.add("our-culture-bottom-top");
+      } 
+      else{
+        textArea.style.opacity=0;
+        textArea.classList.remove("our-culture-bottom-top");
+      }       
+      }
+      else{
+        textArea.style.opacity=0;
+        textArea.classList.remove("our-culture-bottom-top");
+      }
+
+
+
+
+
+
       if (elementY < 300) {
         commonOutlineText.style.opacity = 1;
         commonOutlineText.classList.add("animate-active");

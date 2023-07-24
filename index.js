@@ -56,7 +56,8 @@ function handleScroll() {
   let lineArrow;
   let insightImages;
   let trekImage;
-  containers.forEach((element) => {
+  let totalContainers = containers.length;
+  containers.forEach((element,i) => {
     if (element.children.length) {
       imageArea = element.querySelector(".imageArea");
       if (imageArea.children.length) {
@@ -280,6 +281,7 @@ function handleScroll() {
         }
       }
 
+
       //   imageArea = element.querySelector(".imageArea");
       //   textArea = element.querySelector(".textArea");
       //   commonOutlineText = textArea.querySelector(".common-outline-text");
@@ -293,6 +295,45 @@ function handleScroll() {
       //   commonHeading.classList.remove("animate-active");
       //   commonParagraphText.style.opacity = 0;
       //   commonParagraphText.classList.remove("animate-active");
+
+      if(i===totalContainers-1){
+        
+        if (elementY < 500) {
+          commonHeading.style.opacity = 1;
+          commonHeading.classList.add("animate-active");
+        } else {
+          commonHeading.style.opacity = 0;
+          commonHeading.classList.remove("animate-active");
+        }
+
+        if(elementY < 450){
+          commonParagraphText.style.opacity = 1;
+          commonParagraphText.classList.add("animate-active");
+        }else{
+          commonParagraphText.style.opacity = 0;
+          commonParagraphText.classList.remove("animate-active");
+        }
+
+        if(elementY < 400){
+          if (commonButton) {
+            commonButton.style.opacity = 1;
+            commonButton.classList.add("animate-active");
+          }
+        }
+        else{
+          if (commonButton) {
+            commonButton.style.opacity = 0;
+            commonButton.classList.remove("animate-active");
+          }
+        }
+
+      }
+
+
+
+
+
+
     }
   });
 }

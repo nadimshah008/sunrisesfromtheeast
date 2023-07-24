@@ -784,4 +784,31 @@ section {
     transform: rotate(0deg);
     opacity: 1;
   }
+}
+.space {
+  margin: 2vw 0;
+}
+
+.joinsonata-area {
+  align-items: center;
+}
+.joinsonata-area .imageArea {
+  height: 40vw;
+}
+.joinsonata-area .imageArea .img {
+  height: 100%;
+  width: auto;
+}
+.joinsonata-area .textArea {
+  right: 0;
+  top: 8vw;
+}
+.joinsonata-area .textArea .common-heading {
+  font-size: 3vw;
+}
+.joinsonata-area .textArea .common-paragraph-text {
+  width: 15vw;
+  margin-top: 3vw;
+  font-weight: 500;
+  font-size: 1vw;
 }/*# sourceMappingURL=index.css.map */

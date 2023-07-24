@@ -778,4 +778,30 @@ section {
   }
 }
 
+.space{
+  margin: 2vw 0;
+}
 
+.joinsonata-area{
+  align-items: center;
+  .imageArea{
+    height: 40vw;
+    .img{
+      height: 100%;
+      width: auto;
+    }
+  }
+  .textArea{
+      right: 0;
+      top: 8vw;
+    .common-heading{
+      font-size: 3vw;
+    }
+    .common-paragraph-text{
+      width: 15vw;
+      margin-top: 3vw;
+      font-weight: 500;
+      font-size: 1vw;
+    }
+  }
+}

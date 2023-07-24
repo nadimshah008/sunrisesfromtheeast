@@ -424,7 +424,7 @@ section {
           animation-delay: 1s;
           opacity: 0;
         }
-        .img {
+        .img-client {
           height: 35vw;
           z-index: 90;
           animation: opacityAnimate 1s linear;
@@ -708,3 +708,74 @@ section {
     bottom: 5vw;
   }
 }
+.ourpeople-area{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid;
+  overflow: hidden;
+  position: relative;
+  .imageArea{
+    height: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .img{
+      height: 100%;
+      width: auto;
+      object-fit: fill;
+      opacity: 0;
+      position: absolute;
+      transition: all 0.5s linear;
+    }
+  }
+  .textArea{
+    height: 100%;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    .common-paragraph-text{
+      width: 25vw;
+    }
+    .common-outline-button{
+      right: 8vw;
+      position: relative;
+    }
+  }
+}
+
+@keyframes rotateAndDisappear {
+  0% {
+    opacity: 1;
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 0 !important;
+  }
+}
+.animate-our-people{
+  animation-name: rotateAndDisappear;
+  animation-duration: 2s; /* Change the duration as per your preference */
+  animation-timing-function: ease;
+}
+
+.animate-our-people-complete{
+  animation: rotateAndStay 2s ease;
+}
+
+@keyframes rotateAndStay {
+  0% {
+    opacity: 1;
+    transform: rotate(-360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+
